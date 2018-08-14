@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        applicationId "com.itingchunyu.m"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation deps.junit
+    androidTestImplementation(deps.espresso.core, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    })
+    androidTestImplementation(deps.espresso.contrib, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    })
+
+    implementation deps.support.support_vector_drawable
+    implementation deps.support.app_compat
+//    implementation deps.support.recyclerview
+//    implementation deps.support.cardview
+    implementation deps.support.design
+    implementation deps.constraint_layout
+
+    implementation deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+
+    implementation deps.retrofit.adapter_json
+    implementation deps.retrofit.runtime
+    implementation deps.gson
+    implementation deps.retrofit.logging
+
+    //dagger2
+    implementation deps.dagger.android_support
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    annotationProcessor deps.dagger.android_support_compiler
+    annotationProcessor deps.dagger.compiler
+
+    //arch
+//    implementation deps.room.runtime
+//    annotationProcessor deps.room.compiler
+//    androidTestImplementation deps.room.testing
+    implementation deps.lifecycle.extensions
+    annotationProcessor deps.lifecycle.compiler
+    testImplementation deps.arch_testing
+
+
+    androidTestImplementation deps.support.app_compat
+    androidTestImplementation deps.support.recyclerview
+    androidTestImplementation deps.support.cardview
+    androidTestImplementation deps.support.design
+}

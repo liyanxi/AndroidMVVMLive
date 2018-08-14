@@ -1,0 +1,119 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+ext.deps = [:]
+def versions = [:]
+versions.arch = hasProperty("ARCH_VERSION") ? getProperty("ARCH_VERSION") : "1.1.1"
+versions.support = "27.1.1"
+versions.dagger = "2.11"
+versions.junit = "4.12"
+versions.espresso = "3.0.1"
+versions.retrofit = "2.4.0"
+versions.constraint_layout = "1.0.2"
+versions.glide = "4.3.1"
+versions.timber = "4.5.1"
+versions.android_gradle_plugin = "3.1.4"
+versions.rxjava2 = "2.1.5"
+versions.rx_android = "2.0.1"
+versions.leakcanary = "1.5.4"
+versions.butterknife = "8.8.1"
+versions.hotfix = "3.1.1"
+versions.gridpassword = "0.3"
+versions.pdf_viewer = "2.5.0"
+versions.evetnbus = "3.0.0"
+versions.gson = "2.8.0"
+versions.logging = "3.4.2"
+versions.ultra_ptr = "1.0.11"
+
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+support.support_vector_drawable = "com.android.support:support-vector-drawable:$versions.support"
+deps.support = support
+
+def room = [:]
+room.runtime = "android.arch.persistence.room:runtime:$versions.arch"
+room.compiler = "android.arch.persistence.room:compiler:$versions.arch"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.arch"
+room.testing = "android.arch.persistence.room:testing:$versions.arch"
+deps.room = room
+
+def lifecycle = [:]
+lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.arch"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.arch"
+deps.lifecycle = lifecycle
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.adapter_rxjava = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+retrofit.adapter_scalars = "com.squareup.retrofit2:converter-scalars:$versions.retrofit"
+retrofit.adapter_json = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.logging = "com.squareup.okhttp3:logging-interceptor:$versions.logging"
+deps.retrofit = retrofit
+
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+deps.espresso = espresso
+
+def butterknife = [:]
+butterknife.runtime = "com.jakewharton:butterknife:$versions.butterknife"
+butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
+deps.butterknife = butterknife
+
+def leakcanary = [:]
+leakcanary.debug_compiler = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+leakcanary.release_compiler = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
+deps.leakcanary = leakcanary
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def jpush = [:]
+jpush.compiler = "cn.jiguang.sdk:jpush:3.1.3"
+jpush.core = "cn.jiguang.sdk:jcore:1.2.1"
+deps.jpush = jpush
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.junit = "junit:junit:$versions.junit"
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+deps.umeng_analytics = "com.umeng.analytics:analytics:latest.integration"
+deps.hotfix = "com.aliyun.ams:alicloud-android-hotfix:$versions.hotfix"
+deps.grid_password_view = "com.jungly:gridPasswordView:$versions.gridpassword"
+deps.pdf_viewer = "com.github.barteksc:android-pdf-viewer:$versions.pdf_viewer"
+deps.eventbus = "org.greenrobot:eventbus:$versions.evetnbus"
+deps.gson = "com.google.code.gson:gson:$versions.gson"
+deps.rxpermission = "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar"
+deps.ultra_ptr = "in.srain.cube:ultra-ptr:$versions.ultra_ptr"
+deps.arch_testing = "android.arch.core:core-testing:$versions.arch"
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 15
+build_versions.target_sdk = 27
+build_versions.build_tools = "27.0.3"
+ext.build_versions = build_versions
