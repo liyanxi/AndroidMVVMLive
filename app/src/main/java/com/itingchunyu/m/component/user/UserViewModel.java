@@ -2,6 +2,7 @@ package com.itingchunyu.m.component.user;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.itingchunyu.m.data.Resource;
@@ -20,11 +21,15 @@ import javax.inject.Inject;
 public class UserViewModel extends BaseViewModel {
 
     @Inject
-    UserViewModel(@NonNull Application application,@NonNull TraderRepository mTraderRepository) {
+    UserViewModel(@NonNull Application application, @NonNull TraderRepository mTraderRepository) {
         super(application, mTraderRepository);
     }
+
+    public final MutableLiveData<String> title = new MutableLiveData<>();
 
     public LiveData<Resource<TestEntity>> getHome() {
         return mTraderRepository.getHome();
     }
+
+
 }

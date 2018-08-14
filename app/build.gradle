@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation deps.junit
     androidTestImplementation(deps.espresso.core, {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -40,40 +40,34 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-
     implementation deps.support.support_vector_drawable
     implementation deps.support.app_compat
-//    implementation deps.support.recyclerview
-//    implementation deps.support.cardview
+    //    implementation deps.support.recyclerview
+    //    implementation deps.support.cardview
     implementation deps.support.design
     implementation deps.constraint_layout
-
     implementation deps.glide.runtime
     annotationProcessor deps.glide.compiler
-
     implementation deps.retrofit.adapter_json
     implementation deps.retrofit.runtime
     implementation deps.gson
     implementation deps.retrofit.logging
-
     //dagger2
     implementation deps.dagger.android_support
     implementation deps.dagger.runtime
     implementation deps.dagger.android
     annotationProcessor deps.dagger.android_support_compiler
     annotationProcessor deps.dagger.compiler
-
     //arch
-//    implementation deps.room.runtime
-//    annotationProcessor deps.room.compiler
-//    androidTestImplementation deps.room.testing
+    //    implementation deps.room.runtime
+    //    annotationProcessor deps.room.compiler
+    //    androidTestImplementation deps.room.testing
     implementation deps.lifecycle.extensions
     annotationProcessor deps.lifecycle.compiler
     testImplementation deps.arch_testing
-
-
     androidTestImplementation deps.support.app_compat
     androidTestImplementation deps.support.recyclerview
     androidTestImplementation deps.support.cardview
     androidTestImplementation deps.support.design
+    annotationProcessor 'com.android.databinding:compiler:3.2.0-alpha10'
 }
