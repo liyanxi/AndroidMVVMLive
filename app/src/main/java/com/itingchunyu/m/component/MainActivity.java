@@ -3,7 +3,6 @@ package com.itingchunyu.m.component;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,6 +14,7 @@ import com.itingchunyu.m.R;
 import com.itingchunyu.m.component.base.BaseActivity;
 import com.itingchunyu.m.component.user.UserViewModel;
 import com.itingchunyu.m.data.model.TestEntity;
+import com.itingchunyu.m.databinding.ActivityMainBinding;
 import com.itingchunyu.m.live.AbstractResourceObserver;
 
 import javax.inject.Inject;
@@ -30,8 +30,6 @@ public class MainActivity extends BaseActivity {
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
-
-//    ViewDataBinding viewDataBinding;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -58,11 +56,11 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
-//        viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        ActivityMainBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-//        mTextMessage = findViewById(R.id.message);
-//        BottomNavigationView navigation = findViewById(R.id.navigation);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mTextMessage = findViewById(R.id.message);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         UserViewModel userViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel.class);
 
@@ -79,6 +77,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-//        viewDataBinding.setLifecycleOwner(this);
+        viewDataBinding.setViewModel(userViewModel);
+        viewDataBinding.setLifecycleOwner(this);
     }
 }

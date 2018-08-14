@@ -30,6 +30,4 @@ public class UserViewModel extends BaseViewModel {
     public LiveData<Resource<TestEntity>> getHome() {
         return mTraderRepository.getHome();
     }
-
-
 }
