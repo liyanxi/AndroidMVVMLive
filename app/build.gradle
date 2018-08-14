@@ -69,5 +69,4 @@ dependencies {
     androidTestImplementation deps.support.recyclerview
     androidTestImplementation deps.support.cardview
     androidTestImplementation deps.support.design
-    annotationProcessor 'com.android.databinding:compiler:3.2.0-alpha10'
 }

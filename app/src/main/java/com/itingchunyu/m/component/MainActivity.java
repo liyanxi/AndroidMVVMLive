@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
