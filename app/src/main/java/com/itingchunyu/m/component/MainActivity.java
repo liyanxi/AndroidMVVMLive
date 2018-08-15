@@ -5,7 +5,7 @@ import android.support.design.widget.BottomNavigationView;
 
 import com.itingchunyu.m.BR;
 import com.itingchunyu.m.R;
-import com.itingchunyu.m.component.base.BaseActivity;
+import com.itingchunyu.m.component.base.BaseBindingActivity;
 import com.itingchunyu.m.component.user.UserViewModel;
 import com.itingchunyu.m.data.model.TestEntity;
 import com.itingchunyu.m.databinding.ActivityMainBinding;
@@ -16,7 +16,7 @@ import com.itingchunyu.m.live.AbstractResourceObserver;
  * @date 2018/8/14
  * Copyright (c) 2018 www.finlendingcloud.com. All rights reserved.
  */
-public class MainActivity extends BaseActivity<ActivityMainBinding, UserViewModel> {
+public class MainActivity extends BaseBindingActivity<ActivityMainBinding, UserViewModel> {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {

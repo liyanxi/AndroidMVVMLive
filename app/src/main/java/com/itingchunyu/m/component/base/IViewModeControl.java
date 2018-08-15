@@ -7,14 +7,7 @@ import com.itingchunyu.m.viewmodel.BaseViewModel;
  * @date 2018/8/15
  * Copyright (c) 2018 www.finlendingcloud.com. All rights reserved.
  */
-public interface BaseLifeCycleControl<VM extends BaseViewModel> {
-
-    /**
-     * 实际布局
-     *
-     * @return layout id
-     */
-    int getLayoutId();
+public interface IViewModeControl<VM extends BaseViewModel> {
 
     /**
      * the BR id of the variable to be set. For example, if the variable is
@@ -30,4 +23,10 @@ public interface BaseLifeCycleControl<VM extends BaseViewModel> {
      * @return model class
      */
     Class<VM> getModelClass();
+
+    /**
+     * A ViewModel that is an instance of the given type {@code VM}.
+     * @return viewModel extends WM
+     */
+    VM obtainViewModel();
 }
