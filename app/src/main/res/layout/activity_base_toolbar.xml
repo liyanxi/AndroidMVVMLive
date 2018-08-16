@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/base_parent_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- define toolbar -->
+        <include layout="@layout/layout_toolbar" />
+
+        <FrameLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

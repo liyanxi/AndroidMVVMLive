@@ -4,13 +4,10 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.os.Bundle;
 
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
 import javax.inject.Inject;
-
-import dagger.android.support.DaggerAppCompatActivity;
 
 /**
  * activity 基础类
@@ -20,7 +17,7 @@ import dagger.android.support.DaggerAppCompatActivity;
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 
-public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends DaggerAppCompatActivity
+public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity
         implements ILifeCycleControl, IViewModeControl<VM> {
 
     /**
@@ -37,11 +34,9 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends
     ViewModelProvider.Factory viewModelFactory;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void generateContentView(int layoutResId) {
         // Inflate view and obtain an instance of the binding class.
-        binding = DataBindingUtil.setContentView(this, getLayoutId());
+        binding = DataBindingUtil.setContentView(this, layoutResId);
 
         // Specify the current activity as the lifecycle owner.
         binding.setLifecycleOwner(this);
