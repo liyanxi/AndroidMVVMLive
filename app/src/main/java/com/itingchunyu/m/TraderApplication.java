@@ -8,7 +8,7 @@ import dagger.android.DaggerApplication;
 /**
  * @author liyanxi
  * @date 2018/8/13
- * Copyright (c) 2018 www.finlendingcloud.com. All rights reserved.
+ * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 
 public class TraderApplication extends DaggerApplication {

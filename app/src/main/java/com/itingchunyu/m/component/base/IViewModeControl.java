@@ -5,7 +5,7 @@ import com.itingchunyu.m.viewmodel.BaseViewModel;
 /**
  * @author liyanxi
  * @date 2018/8/15
- * Copyright (c) 2018 www.finlendingcloud.com. All rights reserved.
+ * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 public interface IViewModeControl<VM extends BaseViewModel> {
 

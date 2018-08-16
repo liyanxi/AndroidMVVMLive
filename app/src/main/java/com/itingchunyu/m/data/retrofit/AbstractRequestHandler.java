@@ -16,7 +16,7 @@ import retrofit2.Call;
  *            这里规定code==0或code!=0，两种情况假如都有后端响应则信息定义在同一实体类中见{@link AbstractRequestHandler <M>}R泛型
  * @author liyanxi
  * @date 2018/8/14
- * Copyright (c) 2018 www.finlendingcloud.com. All rights reserved.
+ * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 
 public abstract class AbstractRequestHandler<M> {
