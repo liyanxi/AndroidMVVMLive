@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    android:id="@+id/toolbar"
-    app:popupTheme="@style/AppTheme.PopupOverlay">
+    app:popupTheme="@style/AppTheme.PopupOverlay"
+    app:titleTextColor="@android:color/white">
 
     <TextView
         android:id="@+id/toolbar_title"
@@ -17,5 +18,5 @@
         android:text="@string/app_name"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 </android.support.v7.widget.Toolbar>

@@ -10,14 +10,6 @@ import com.itingchunyu.m.viewmodel.BaseViewModel;
 public interface IViewModeControl<VM extends BaseViewModel> {
 
     /**
-     * the BR id of the variable to be set. For example, if the variable is
-     * <code>x</code>, then variableId will be <code>BR.x</code>.
-     *
-     * @return init ViewModel id
-     */
-    int getVariableViewModelId();
-
-    /**
      * The class of the ViewModel to create an instance of it if it is not present.
      *
      * @return model class

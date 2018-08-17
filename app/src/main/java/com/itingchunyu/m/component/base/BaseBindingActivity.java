@@ -1,13 +1,9 @@
 package com.itingchunyu.m.component.base;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 
 import com.itingchunyu.m.viewmodel.BaseViewModel;
-
-import javax.inject.Inject;
 
 /**
  * activity 基础类
@@ -17,21 +13,13 @@ import javax.inject.Inject;
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 
-public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity
-        implements ILifeCycleControl, IViewModeControl<VM> {
+public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends BaseViewModel>
+        extends BaseActivity<VM> implements IBindingControl {
 
     /**
      * xml binding
      */
     protected VB binding;
-
-    /**
-     * ViewModel
-     */
-    protected VM viewModel;
-
-    @Inject
-    ViewModelProvider.Factory viewModelFactory;
 
     @Override
     public void generateContentView(int layoutResId) {
@@ -41,15 +29,9 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends
         // Specify the current activity as the lifecycle owner.
         binding.setLifecycleOwner(this);
 
-        binding.setVariable(getVariableViewModelId(), viewModel = obtainViewModel());
-    }
-
-    /**
-     * @return A ViewModel that is an instance of the given type {@code VM}.
-     */
-    @Override
-    public VM obtainViewModel() {
-        return ViewModelProviders.of(this, viewModelFactory).get(getModelClass());
+        if (viewModel != null) {
+            binding.setVariable(getVariableViewModelId(), viewModel);
+        }
     }
 
     @Override

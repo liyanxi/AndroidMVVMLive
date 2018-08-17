@@ -7,13 +7,16 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.itingchunyu.m.R;
+import com.itingchunyu.m.viewmodel.BaseViewModel;
 
 /**
  * @author liyanxi
  * @date 2018/8/16
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
-public abstract class BaseToolbarActivity extends BaseActivity {
+public abstract class BaseToolbarActivity<VM extends BaseViewModel> extends BaseActivity<VM> {
+
+    public static final int CONTENT_VIEW_ID = R.id.content_container;
     private static final int BASE_VIEW_ID = R.layout.activity_base_toolbar;
     private static final FrameLayout.LayoutParams LAYOUT_PARAMS = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
     protected FrameLayout mContentView;

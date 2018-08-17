@@ -23,6 +23,7 @@ public interface ILifeCycleControl {
 
     /**
      * 初始化ui layout 之后数据
+     * @param savedInstanceState bundle
      */
     void onAfterSetContentLayout(Bundle savedInstanceState);
 }

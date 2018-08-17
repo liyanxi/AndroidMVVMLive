@@ -1,7 +1,6 @@
 package com.itingchunyu.m.component.base;
 
 import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.view.View;
@@ -18,18 +17,13 @@ import javax.inject.Inject;
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 
-public abstract class BaseBindingToolbarActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseToolbarActivity
-        implements ILifeCycleControl, IViewModeControl<VM> {
+public abstract class BaseBindingToolbarActivity<VB extends ViewDataBinding, VM extends BaseViewModel>
+        extends BaseToolbarActivity<VM> implements IBindingControl {
 
     /**
      * xml binding
      */
     protected VB binding;
-
-    /**
-     * ViewModel
-     */
-    protected VM viewModel;
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
@@ -41,17 +35,10 @@ public abstract class BaseBindingToolbarActivity<VB extends ViewDataBinding, VM 
 
         // Specify the current activity as the lifecycle owner.
         binding.setLifecycleOwner(this);
-
-        binding.setVariable(getVariableViewModelId(), viewModel = obtainViewModel());
+        if (viewModel != null) {
+            binding.setVariable(getVariableViewModelId(), viewModel);
+        }
         return binding.getRoot();
-    }
-
-    /**
-     * @return A ViewModel that is an instance of the given type {@code VM}.
-     */
-    @Override
-    public VM obtainViewModel() {
-        return ViewModelProviders.of(this, viewModelFactory).get(getModelClass());
     }
 
     @Override
