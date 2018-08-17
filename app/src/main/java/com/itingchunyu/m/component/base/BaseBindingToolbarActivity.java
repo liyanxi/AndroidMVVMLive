@@ -35,7 +35,7 @@ public abstract class BaseBindingToolbarActivity<VB extends ViewDataBinding, VM 
 
         // Specify the current activity as the lifecycle owner.
         binding.setLifecycleOwner(this);
-        if (viewModel != null) {
+        if (viewModel != null && getVariableViewModelId() != 0) {
             binding.setVariable(getVariableViewModelId(), viewModel);
         }
         return binding.getRoot();

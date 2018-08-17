@@ -18,7 +18,7 @@ import com.itingchunyu.m.viewmodel.BaseViewModel;
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
 public abstract class BaseBindingFragment<VB extends ViewDataBinding, VM extends BaseViewModel>
-        extends BaseFragment implements IBindingControl {
+        extends BaseFragment<VM> implements IBindingControl {
 
     /**
      * xml binding
@@ -28,7 +28,7 @@ public abstract class BaseBindingFragment<VB extends ViewDataBinding, VM extends
     @Override
     View generateContentView(@NonNull LayoutInflater inflater, int layoutId, @Nullable ViewGroup container, boolean attachToParent) {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
-        if (viewModel != null) {
+        if (viewModel != null && getVariableViewModelId() != 0) {
             binding.setVariable(getVariableViewModelId(), viewModel);
         }
         return binding.getRoot();

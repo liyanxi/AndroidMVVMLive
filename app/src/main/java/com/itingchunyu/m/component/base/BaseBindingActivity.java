@@ -29,7 +29,7 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends
         // Specify the current activity as the lifecycle owner.
         binding.setLifecycleOwner(this);
 
-        if (viewModel != null) {
+        if (viewModel != null && getVariableViewModelId() != 0) {
             binding.setVariable(getVariableViewModelId(), viewModel);
         }
     }
