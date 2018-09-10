@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.itingchunyu.m.component.base.interfaces.ILifeCycleControl;
+import com.itingchunyu.m.component.base.interfaces.ILoadingControl;
+import com.itingchunyu.m.component.base.interfaces.IViewModeControl;
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
 import javax.inject.Inject;
@@ -20,7 +23,8 @@ import dagger.android.support.DaggerFragment;
  * @date 2018/8/17
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
-public abstract class BaseFragment<VM extends BaseViewModel> extends DaggerFragment implements ILifeCycleControl, IViewModeControl<VM> {
+public abstract class BaseFragment<VM extends BaseViewModel> extends DaggerFragment implements ILifeCycleControl, IViewModeControl<VM>, ILoadingControl {
+
 
     /**
      * ViewModel
@@ -56,7 +60,7 @@ public abstract class BaseFragment<VM extends BaseViewModel> extends DaggerFragm
      *
      * @param inflater       The LayoutInflater used to inflate the binding layout.
      * @param layoutId       The layout resource ID of the layout to inflate.
-     * @param container         Optional view to be the parent of the generated hierarchy
+     * @param container      Optional view to be the parent of the generated hierarchy
      *                       (if attachToParent is true), or else simply an object that provides
      *                       a set of LayoutParams values for root of the returned hierarchy
      *                       (if attachToParent is false.)
@@ -75,10 +79,16 @@ public abstract class BaseFragment<VM extends BaseViewModel> extends DaggerFragm
      */
     @Override
     public VM obtainViewModel() {
-        if (getModelClass() == null) {
+        if (getModelClass() == null || getActivity() == null) {
             return null;
         }
-        return ViewModelProviders.of(this, viewModelFactory).get(getModelClass());
+        //此处ViewModel 关联Activity对象
+        return ViewModelProviders.of(getActivity(), viewModelFactory).get(getModelClass());
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        hideWaitDialog();
+    }
 }

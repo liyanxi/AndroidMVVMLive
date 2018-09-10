@@ -2,6 +2,7 @@ package com.itingchunyu.m.component.base;
 
 import android.os.Bundle;
 
+import com.itingchunyu.m.component.base.interfaces.ILazyFragmentControl;
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
 /**

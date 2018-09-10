@@ -4,6 +4,9 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
+import com.itingchunyu.m.component.base.interfaces.ILifeCycleControl;
+import com.itingchunyu.m.component.base.interfaces.ILoadingControl;
+import com.itingchunyu.m.component.base.interfaces.IViewModeControl;
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
 import javax.inject.Inject;
@@ -17,7 +20,7 @@ import dagger.android.support.DaggerAppCompatActivity;
  * @date 2018/8/16
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
-public abstract class BaseActivity<VM extends BaseViewModel> extends DaggerAppCompatActivity implements ILifeCycleControl, IViewModeControl<VM> {
+public abstract class BaseActivity<VM extends BaseViewModel> extends DaggerAppCompatActivity implements ILifeCycleControl, IViewModeControl<VM>, ILoadingControl {
 
     /**
      * ViewModel
@@ -30,6 +33,7 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends DaggerAppCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         onBeforeSetContentLayout();
         viewModel = obtainViewModel();
         generateContentView(getLayoutId());
@@ -41,7 +45,7 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends DaggerAppCo
      *
      * @param layoutResId 指定布局id
      */
-    abstract void generateContentView(int layoutResId);
+    protected abstract void generateContentView(int layoutResId);
 
     /**
      * @return A ViewModel that is an instance of the given type {@code VM}.
@@ -52,5 +56,11 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends DaggerAppCo
             return null;
         }
         return ViewModelProviders.of(this, viewModelFactory).get(getModelClass());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        hideWaitDialog();
     }
 }

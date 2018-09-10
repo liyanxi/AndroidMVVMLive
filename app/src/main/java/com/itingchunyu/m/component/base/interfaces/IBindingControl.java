@@ -1,4 +1,4 @@
-package com.itingchunyu.m.component.base;
+package com.itingchunyu.m.component.base.interfaces;
 
 /**
  * data binding 相关抽象类

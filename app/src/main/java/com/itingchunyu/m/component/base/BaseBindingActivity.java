@@ -3,6 +3,7 @@ package com.itingchunyu.m.component.base;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 
+import com.itingchunyu.m.component.base.interfaces.IBindingControl;
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
 /**
@@ -31,6 +32,24 @@ public abstract class BaseBindingActivity<VB extends ViewDataBinding, VM extends
 
         if (viewModel != null && getVariableViewModelId() != 0) {
             binding.setVariable(getVariableViewModelId(), viewModel);
+        }
+
+        setupToastOrLoadingObserve();
+    }
+
+    /**
+     * add toast or loading observe
+     */
+    private void setupToastOrLoadingObserve() {
+        if (viewModel != null) {
+            viewModel.loading.observe(this, isLoading -> {
+                if (isLoading != null && isLoading) {
+                    showWaitDialog();
+                } else {
+                    hideWaitDialog();
+                }
+            });
+            viewModel.toastMsg.observe(this, this::showToast);
         }
     }
 

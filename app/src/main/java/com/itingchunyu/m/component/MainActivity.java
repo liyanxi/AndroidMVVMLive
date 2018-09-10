@@ -1,5 +1,6 @@
 package com.itingchunyu.m.component;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 
@@ -55,12 +56,20 @@ public class MainActivity extends BaseBindingToolbarActivity<ActivityMainBinding
 
             @Override
             public void onSuccess(TestEntity data) {
+                // request success
                 viewModel.title.setValue(data.toString());
             }
 
             @Override
-            public void onException(String errorMsg, int code, TestEntity data) {
+            public void onLoading(boolean isLoading) {
+                // request status loading
+                viewModel.loading.postValue(isLoading);
+            }
 
+            @Override
+            public void onError(String errorMsg, String code) {
+                // request error/success message
+                viewModel.toastMsg.postValue(errorMsg);
             }
         });
     }
@@ -73,5 +82,20 @@ public class MainActivity extends BaseBindingToolbarActivity<ActivityMainBinding
     @Override
     public Class<UserViewModel> getModelClass() {
         return UserViewModel.class;
+    }
+
+    @Override
+    public void showToast(String msg) {
+
+    }
+
+    @Override
+    public void hideWaitDialog() {
+
+    }
+
+    @Override
+    public Dialog showWaitDialog() {
+        return null;
     }
 }

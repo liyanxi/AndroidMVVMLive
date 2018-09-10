@@ -10,22 +10,22 @@ package com.itingchunyu.m.data;
 
 public class ApiResponse<T> {
 
-    public final int code;
-    public final String message;
-    public final T data;
-
     /**
-     * 前后端统一规定code==0判定为正常操作成功，否则视为异常情况
-     *
-     * @return 是否操作成功
+     * Response Code 200
      */
-    public boolean isSuccessful() {
-        return code == 0;
-    }
+    public T data;
 
-    public ApiResponse(T data, String message, int code) {
-        this.data = data;
-        this.message = message;
-        this.code = code;
-    }
+    /** Response Code != 200
+     * status : 7003000 异常状态码
+     * error : 请输入正确的手机号码
+     * exception : com.ccmtjf.thor.exception.ThorException
+     * timestamp : 1535080779733
+     */
+    public String status;
+    public String error;
+    public String message;
+    public String exception;
+    public String timestamp;
+
+
 }

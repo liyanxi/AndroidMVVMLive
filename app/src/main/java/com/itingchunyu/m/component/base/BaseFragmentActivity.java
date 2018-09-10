@@ -3,7 +3,7 @@ package com.itingchunyu.m.component.base;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.itingchunyu.m.viewmodel.BaseViewModel;
+import com.itingchunyu.c.viewmodel.BaseViewModel;
 
 /**
  * 容纳fragment的activity容器
@@ -34,4 +34,20 @@ public abstract class BaseFragmentActivity<VM extends BaseViewModel> extends Bas
      * @return fragment child container
      */
     protected abstract Fragment getFragment();
+
+    @Override
+    public void onBeforeSetContentLayout() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    public void onAfterSetContentLayout(Bundle savedInstanceState) {
+
+    }
+
 }

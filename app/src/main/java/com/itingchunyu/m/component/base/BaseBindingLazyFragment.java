@@ -1,38 +1,34 @@
 package com.itingchunyu.m.component.base;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.itingchunyu.m.component.base.interfaces.IBindingControl;
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
-import javax.inject.Inject;
-
 /**
- * activity binding toolbar base class
+ * fragment 基础类
  *
  * @author liyanxi
- * @date 2018/8/16
+ * @date 2018/8/15
  * Copyright (c) 2018 www.itingchunyu.com. All rights reserved.
  */
-
-public abstract class BaseBindingToolbarActivity<VB extends ViewDataBinding, VM extends BaseViewModel>
-        extends BaseToolbarActivity<VM> implements IBindingControl {
+public abstract class BaseBindingLazyFragment<VB extends ViewDataBinding, VM extends BaseViewModel>
+        extends BaseLazyFragment<VM> implements IBindingControl {
 
     /**
      * xml binding
      */
     protected VB binding;
 
-    @Inject
-    ViewModelProvider.Factory viewModelFactory;
-
     @Override
-    protected View obtainChildView(int layoutResId) {
-        // Inflate view and obtain an instance of the binding class.
-        binding = DataBindingUtil.inflate(getLayoutInflater(), layoutResId, null, false);
+    View generateContentView(@NonNull LayoutInflater inflater, int layoutId, @Nullable ViewGroup container, boolean attachToParent) {
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
 
         // Specify the current activity as the lifecycle owner.
         binding.setLifecycleOwner(this);
@@ -43,8 +39,8 @@ public abstract class BaseBindingToolbarActivity<VB extends ViewDataBinding, VM 
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         binding.unbind();
     }
 }

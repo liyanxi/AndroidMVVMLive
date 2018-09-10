@@ -1,4 +1,4 @@
-package com.itingchunyu.m.component.base;
+package com.itingchunyu.m.component.base.interfaces;
 
 /**
  * 懒加载抽象

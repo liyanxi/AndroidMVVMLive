@@ -1,4 +1,4 @@
-package com.itingchunyu.m.component.base;
+package com.itingchunyu.m.component.base.interfaces;
 
 import com.itingchunyu.m.viewmodel.BaseViewModel;
 
@@ -21,4 +21,10 @@ public interface IViewModeControl<VM extends BaseViewModel> {
      * @return viewModel extends WM
      */
     VM obtainViewModel();
+
+    /**
+     * show common toast
+     * @param msg app info
+     */
+    void showToast(String msg);
 }

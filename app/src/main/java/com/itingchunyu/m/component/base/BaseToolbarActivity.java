@@ -5,6 +5,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.itingchunyu.m.R;
 import com.itingchunyu.m.viewmodel.BaseViewModel;
@@ -20,7 +21,7 @@ public abstract class BaseToolbarActivity<VM extends BaseViewModel> extends Base
     private static final int BASE_VIEW_ID = R.layout.activity_base_toolbar;
     private static final FrameLayout.LayoutParams LAYOUT_PARAMS = new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
     protected FrameLayout mContentView;
-    private Toolbar mToolbar;
+    protected Toolbar mToolbar;
 
     @Override
     public void generateContentView(int layoutResId) {
@@ -63,28 +64,39 @@ public abstract class BaseToolbarActivity<VM extends BaseViewModel> extends Base
         initToolbarView();
     }
 
+    protected TextView mToolbarTitle;
+
     /**
      * 初始化toolbar view
      */
     private void initToolbarView() {
         mToolbar = findViewById(R.id.toolbar);
+        mToolbarTitle = findViewById(R.id.toolbar_title);
+        setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             // 让原始的toolbar的title不显示，可以使用
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationOnClickListener(v -> {
+            //finish activity
+            onBackPressed();
+        });
+        //获取 AndroidManifest.xml label title
+        mToolbarTitle.setText(getTitle());
+        setupCustomToolbar();
     }
 
     /**
-     * 复写父类 {@link android.app.Activity#setTitle(CharSequence)} 设置标题
-     *
-     * @param title
+     * 自定义顶部toolbar
      */
-    @Override
-    public void setTitle(CharSequence title) {
-        super.setTitle(title);
+    protected void setupCustomToolbar() {
+        // no something to child implementation
     }
 
+    @Override
+    public void setTitle(CharSequence title) {
+        mToolbarTitle.setText(title);
+    }
 }

@@ -3,10 +3,6 @@ package com.itingchunyu.m.data;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import static com.itingchunyu.m.data.Status.ERROR;
-import static com.itingchunyu.m.data.Status.LOADING;
-import static com.itingchunyu.m.data.Status.SUCCESS;
-
 /**
  * a generic class that describes a data with a status
  *
@@ -17,15 +13,14 @@ import static com.itingchunyu.m.data.Status.SUCCESS;
 
 public class Resource<T> {
     @NonNull
-    public final Status status;
+    private final Status status;
     @Nullable
     public final T data;
     @Nullable
     public final String message;
-    @NonNull
-    public final int code;
+    public final String code;
 
-    private Resource(@NonNull Status status, @Nullable T data, @Nullable String message, @Nullable int code) {
+    private Resource(@NonNull Status status, @Nullable T data, @Nullable String message, String code) {
         this.status = status;
         this.data = data;
         this.message = message;
@@ -33,23 +28,32 @@ public class Resource<T> {
     }
 
     public static <T> Resource<T> success(@NonNull T data) {
-        return new Resource<>(SUCCESS, data, null, 0);
+        return new Resource<>(Status.SUCCESS, data, null, "");
     }
 
-    public static <T> Resource<T> error(String msg, @Nullable T data, @Nullable int code) {
-        return new Resource<>(ERROR, data, msg, code);
+    public static <T> Resource<T> error(String msg, @Nullable T data, String code) {
+        return new Resource<>(Status.ERROR, data, msg, code);
     }
 
     public static <T> Resource<T> loading(@Nullable T data) {
-        return new Resource<>(LOADING, data, null, -1);
+        return new Resource<>(Status.LOADING, data, null, "");
     }
 
     /**
      * 数据状态是否为成功
      *
-     * @return
+     * @return success
      */
     public boolean isSuccess() {
-        return status == SUCCESS;
+        return status == Status.SUCCESS;
+    }
+
+    /**
+     * 数据状态是处于加载状态
+     *
+     * @return loading
+     */
+    public boolean isLoading() {
+        return status == Status.LOADING;
     }
 }

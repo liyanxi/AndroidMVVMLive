@@ -1,7 +1,6 @@
 package com.itingchunyu.m.data.source;
 
 import android.arch.lifecycle.LiveData;
-import android.util.Log;
 
 import com.itingchunyu.m.data.Resource;
 import com.itingchunyu.m.data.model.TestEntity;

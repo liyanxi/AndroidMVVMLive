@@ -2,6 +2,7 @@ package com.itingchunyu.m.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.itingchunyu.m.data.source.TraderRepository;
@@ -20,4 +21,13 @@ public class BaseViewModel extends AndroidViewModel {
         super(application);
         this.mTraderRepository = mTraderRepository;
     }
+
+    /**
+     * ui request loading status
+     */
+    public MutableLiveData<Boolean> loading = new MutableLiveData<>();
+    /**
+     * ui request or verify error info of toast
+     */
+    public MutableLiveData<String> toastMsg = new MutableLiveData<>();
 }
