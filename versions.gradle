@@ -5,6 +5,8 @@
 ext.deps = [:]
 def versions = [:]
 versions.arch = hasProperty("ARCH_VERSION") ? getProperty("ARCH_VERSION") : "1.1.1"
+versions.paging_version = "1.0.0"
+versions.nav_version = "1.0.0-alpha05"
 versions.support = "27.1.1"
 versions.dagger = "2.11"
 versions.junit = "4.12"
@@ -50,6 +52,18 @@ def lifecycle = [:]
 lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.arch"
 lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.arch"
 deps.lifecycle = lifecycle
+
+def paging = [:]
+paging.runtime = "android.arch.paging:runtime:$versions.paging_version"
+paging.common = "android.arch.paging:common:$versions.paging_version"
+deps.paging = paging
+
+def navigation = [:]
+navigation.navigation_fragment = "android.arch.navigation:navigation-fragment:$versions.nav_version"
+navigation.navigation_ui = "android.arch.navigation:navigation-ui:$versions.nav_version"
+navigation.navigation_testing = "android.arch.navigation:navigation-testing:$versions.nav_version"
+navigation.navigation_safe_args_gradle_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.nav_version"
+deps.navigation = navigation
 
 def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
