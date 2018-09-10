@@ -3,19 +3,10 @@ package com.itingchunyu.m.data.retrofit;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
-import com.itingchunyu.tools.util.LogUtil;
-
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.UnsupportedCharsetException;
-
 import okhttp3.Interceptor;
-import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
-import okio.Buffer;
-import okio.BufferedSource;
 
 /**
  * @author liyanxi

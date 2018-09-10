@@ -1,5 +1,6 @@
 package com.itingchunyu.m.component.user;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import com.itingchunyu.m.BR;
@@ -37,5 +38,20 @@ public class UserFragment extends BaseBindingFragment<FragmentUserBinding, UserV
     @Override
     public Class<UserViewModel> getModelClass() {
         return UserViewModel.class;
+    }
+
+    @Override
+    public void showToast(String msg) {
+
+    }
+
+    @Override
+    public void hideWaitDialog() {
+
+    }
+
+    @Override
+    public Dialog showWaitDialog() {
+        return null;
     }
 }

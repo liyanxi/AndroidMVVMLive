@@ -21,14 +21,8 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 
-import com.itingchunyu.c.component.MainViewModel;
-import com.itingchunyu.c.component.auth.UserAuthViewModel;
-import com.itingchunyu.c.component.user.UserViewModel;
-import com.itingchunyu.c.component.user.bank.UserBankListViewModel;
-import com.itingchunyu.c.component.user.setting.SettingViewModel;
-import com.itingchunyu.c.component.user.support.SupportBankViewModel;
-import com.itingchunyu.c.component.web.WebViewModel;
-import com.itingchunyu.c.di.ViewModelSubComponent;
+import com.itingchunyu.m.component.user.UserViewModel;
+import com.itingchunyu.m.di.ViewModelSubComponent;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -51,12 +45,6 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
         // View models cannot be injected directly because they won't be bound to the owner's view model scope.
         creators.put(UserViewModel.class, viewModelSubComponent::projectUserViewModel);
-        creators.put(MainViewModel.class, viewModelSubComponent::projectMainViewModel);
-        creators.put(UserAuthViewModel.class, viewModelSubComponent::projectUserAuthModel);
-        creators.put(UserBankListViewModel.class, viewModelSubComponent::projectUserBankListViewModel);
-        creators.put(SettingViewModel.class, viewModelSubComponent::projectSettingViewModel);
-        creators.put(WebViewModel.class, viewModelSubComponent::projectWebViewModel);
-        creators.put(SupportBankViewModel.class, viewModelSubComponent::projectSupportBankViewModel);
     }
 
     @Override

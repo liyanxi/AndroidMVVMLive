@@ -3,9 +3,9 @@ package com.itingchunyu.m.data.retrofit;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
-import com.itingchunyu.c.data.ApiResponse;
-import com.itingchunyu.tools.util.JsonUtil;
-import com.itingchunyu.tools.util.LogUtil;
+import com.itingchunyu.m.data.ApiResponse;
+import com.itingchunyu.m.util.JsonUtil;
+import com.itingchunyu.m.util.LogUtil;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
