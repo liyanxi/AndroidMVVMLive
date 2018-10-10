@@ -1,12 +1,14 @@
-## Welcome to GitHub Pages
+## Android architecture components 详细解析
 
 You can use the [editor on GitHub](https://github.com/liyanxi/AndroidMVVMLive/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### 项目目录结构分布
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+
+![structure](/doc/android-project-structure.jpg)
 
 ```markdown
 Syntax highlighted code block
@@ -22,7 +24,6 @@ Syntax highlighted code block
 2. List
 
 **Bold** and _Italic_ and `Code` text
-
 [Link](url) and ![Image](src)
 ```
 
